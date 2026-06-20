@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrining Kehamilan</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-main">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>FertilityPro</span>
+            </div>
+            <h1>Skrining Kehamilan</h1>
+            <p>Sistem Penilaian Probabilitas Keberhasilan Kehamilan</p>
+        </div>
+
+        <!-- Main Card -->
+        <div class="card-container">
+            <!-- Alert Message -->
+            <div id="alertMessage" class="alert-message"></div>
+
+            <!-- Form -->
+            <form id="predictionForm" novalidate>
+                <!-- Data Wanita -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-venus"></i>
+                        Data Wanita
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Female_Age" class="form-label required"><i class="fas fa-calendar-alt"></i> Usia Wanita</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="Female_Age" name="Female_Age" 
+                                       min="18" max="55" placeholder="18-55" required>
+                                <span class="input-group-text">th</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="BMI" class="form-label required"><i class="fas fa-weight-scale"></i> BMI</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="BMI" name="BMI" 
+                                       min="15" max="50" step="0.1" placeholder="15-50" required>
+                                <span class="input-group-text">kg/m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Menstrual_Regularity" class="form-label required"><i class="fas fa-calendar-day"></i> Menstruasi</label>
+                            <select class="form-select" id="Menstrual_Regularity" name="Menstrual_Regularity" required>
+                                <option value="">Pilih...</option>
+                                <option value="Regular">Teratur</option>
+                                <option value="Irregular">Tidak Teratur</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PCOS" class="form-label required"><i class="fas fa-notes-medical"></i> PCOS</label>
+                            <select class="form-select" id="PCOS" name="PCOS" required>
+                                <option value="">Pilih...</option>
+                                <option value="Yes">Ya</option>
+                                <option value="No">Tidak</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Stress_Level" class="form-label required"><i class="fas fa-brain"></i> Tingkat Stres</label>
+                            <select class="form-select" id="Stress_Level" name="Stress_Level" required>
+                                <option value="">Pilih...</option>
+                                <option value="High">Tinggi</option>
+                                <option value="Low">Rendah</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Smoking" class="form-label required"><i class="fas fa-smoking"></i> Kebiasaan Merokok</label>
+                            <select class="form-select" id="Smoking" name="Smoking" required>
+                                <option value="">Pilih...</option>
+                                <option value="Yes">Ya</option>
+                                <option value="No">Tidak</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Alcohol_Intake" class="form-label required"><i class="fas fa-wine-glass"></i> Konsumsi Alkohol</label>
+                        <select class="form-select" id="Alcohol_Intake" name="Alcohol_Intake" required>
+                            <option value="">Pilih...</option>
+                            <option value="None">Tidak Ada</option>
+                            <option value="Moderate">Sedang</option>
+                            <option value="High">Tinggi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Data Pria -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-mars"></i>
+                        Data Pria
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Male_Age" class="form-label required"><i class="fas fa-calendar-alt"></i> Usia Pria</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="Male_Age" name="Male_Age" 
+                                       min="18" max="70" placeholder="18-70" required>
+                                <span class="input-group-text">th</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Sperm_Count_Million_per_ml" class="form-label required"><i class="fas fa-microscope"></i> Jumlah Sperma</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="Sperm_Count_Million_per_ml" 
+                                       name="Sperm_Count_Million_per_ml" min="0" max="300" step="0.1"
+                                       placeholder="0-300" required>
+                                <span class="input-group-text">jt/ml</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Motility_%" class="form-label required"><i class="fas fa-dna"></i> Motilitas Sperma</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="Motility_%" name="Motility_%" 
+                                       min="0" max="100" step="0.1" placeholder="0-100" required>
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Trying_Duration_Months" class="form-label required"><i class="fas fa-hourglass-half"></i> Durasi Mencoba</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="Trying_Duration_Months" 
+                                       name="Trying_Duration_Months" min="0" max="120" placeholder="0-120" required>
+                                <span class="input-group-text">bln</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riwayat Pengobatan -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-capsules"></i>
+                        Riwayat Pengobatan
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Treatment_Type" class="form-label required"><i class="fas fa-pills"></i> Jenis Pengobatan</label>
+                        <select class="form-select" id="Treatment_Type" name="Treatment_Type" required>
+                            <option value="">Pilih...</option>
+                            <option value="None">Tidak Ada</option>
+                            <option value="IVF">IVF</option>
+                            <option value="IUI">IUI</option>
+                            <option value="Medication">Obat</option>
+                            <option value="Surgery">Operasi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn-predict" id="predictBtn">
+                        <i class="fas fa-stethoscope"></i>
+                        Prediksi Sekarang
+                    </button>
+                    <button type="reset" class="btn-reset" id="resetBtn">
+                        <i class="fas fa-redo"></i>
+                        Ulang Form
+                    </button>
+                </div>
+
+                <!-- Loading Spinner -->
+                <div id="spinnerContainer" class="spinner-container">
+                    <div class="spinner"></div>
+                    <div class="spinner-text">Memproses prediksi...</div>
+                </div>
+            </form>
+
+            <!-- Result Section -->
+            <div id="resultSection" class="result-section">
+                <div class="result-header">
+                    <div id="resultIcon" class="result-icon"></div>
+                    <div class="result-text">
+                        <h3 id="resultTitle"></h3>
+                        <p id="resultDescription"></p>
+                    </div>
+                </div>
+
+                <div class="probability-container">
+                    <div class="probability-label">Probabilitas Keberhasilan Kehamilan</div>
+                    <div class="probability-value" id="probabilityValue">0%</div>
+                    <div class="probability-bar">
+                        <div id="probabilityBarFill" class="probability-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <div>
+                        <span class="confidence-badge" id="confidenceBadge"></span>
+                    </div>
+                </div>
+
+                <div style="padding: 15px; background-color: rgba(127, 140, 141, 0.1); border-radius: 8px; font-size: 13px; color: #7f8c8d; line-height: 1.6;">
+                    <strong>Catatan:</strong> Hasil prediksi ini adalah untuk tujuan skrining awal dan bukan merupakan diagnosis medis. 
+                    Silakan konsultasikan dengan dokter atau spesialis kesuburan untuk diagnosis dan rekomendasi pengobatan yang lebih akurat.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+flask==3.1.0
+requests==2.32.3
+
+# ML & Data
+scikit-learn==1.8.0
+joblib==1.5.3
+pandas==2.2.3
+numpy==2.2.3
+xgboost==3.3.0
+
+# Validation
+pydantic==2.10.4
+
+# visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Flask Application Requirements
+Flask==3.1.0
+Werkzeug==3.1.2
+
+# Database & ORM (optional for future use)
+# SQLAlchemy==2.1.0
+
+# Validation
+python-dotenv==1.0.1
+
+# Development
+autopep8==2.3.1
+pylint==3.3.1

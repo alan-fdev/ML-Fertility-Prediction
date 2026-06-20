@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.sublime-project
+.sublime-workspace
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Credentials
+secrets/
+*.key
+*.pem
+*.pub
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+
+# Testing
+.coverage
+htmlcov/
+
+# Docker
+.dockerignore
+
+# Jupyter Notebooks & Checkpoints
+*.ipynb
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Project specific
+model/__pycache__/
+*.pkl
+*.joblib
+

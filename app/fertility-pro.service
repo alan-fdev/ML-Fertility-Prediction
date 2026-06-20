@@ -1,0 +1,24 @@
+[Unit]
+Description=FertilityPro Backend Application
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/home/user/Downloads/archive/ML-Fertic_Predict/app
+Environment="PATH=/home/user/Downloads/archive/ML-Fertic_Predict/app/venv/bin"
+Environment="FLASK_ENV=production"
+ExecStart=/home/user/Downloads/archive/ML-Fertic_Predict/app/venv/bin/gunicorn -c gunicorn_config.py app:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+Restart=on-failure
+RestartSec=10
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
