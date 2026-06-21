@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # FertilityPro - Backend Flask Application
 
 Aplikasi backend Flask untuk sistem skrining keberhasilan kehamilan berbasis Machine Learning.
@@ -403,6 +403,4 @@ Untuk mengupdate model dengan training baru:
 **Last Updated**: Juni 2026
 **Version**: 1.0.0
 **Status**: Production Ready ✅
-=======
-# ML-Fertility-Prediction
->>>>>>> b5bd4603176551b5be0805d362cbb458fbd4e732
+
