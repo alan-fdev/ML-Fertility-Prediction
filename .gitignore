@@ -86,9 +86,3 @@ htmlcov/
 .ipynb_checkpoints/
 */.ipynb_checkpoints/
 
-# Project specific
-model/__pycache__/
-*.pkl
-*.joblib
-!model/**/*.pkl
-!model/**/*.joblib
