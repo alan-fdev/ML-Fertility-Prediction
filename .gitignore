@@ -90,4 +90,5 @@ htmlcov/
 model/__pycache__/
 *.pkl
 *.joblib
-
+!model/**/*.pkl
+!model/**/*.joblib
